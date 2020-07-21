@@ -19,5 +19,6 @@ namespace student_exercises
         public string Langauge { get; set; }
 
         public List<Student> assignedStudents { get; set; } = new List<Student>();
+        
     }
 }

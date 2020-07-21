@@ -37,3 +37,4 @@ namespace student_exercises
             exerciseToAssign.assignedStudents.Add(victim);
     }
 }
+}
