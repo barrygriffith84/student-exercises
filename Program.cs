@@ -55,12 +55,13 @@ namespace student_exercises
                 Cohort = cohortThree
             };
 
-            cohortThree.StudentList.Add(devin); 
+            cohortThree.StudentList.Add(devin);
 
-               Student sydney = new Student("Sydney", "Wait", "@TrailRunner")
+            Student sydney = new Student("Sydney", "Wait", "@TrailRunner")
             {
                 Cohort = cohortOne
             };
+          
 
             cohortOne.StudentList.Add(sydney); 
 
@@ -87,6 +88,7 @@ namespace student_exercises
 
 jordan.AssignExerciseToStudent(austin, dailyJournal);
 jordan.AssignExerciseToStudent(sarah, dailyJournal);
+jordan.AssignExerciseToStudent(sarah, nutshell);
 tommy.AssignExerciseToStudent(derekM, nutshell);
 tommy.AssignExerciseToStudent(devin, nutshell);
 jacob.AssignExerciseToStudent(sarah, calculator);
@@ -96,7 +98,9 @@ List<Student> students = new List<Student>() {
   austin,
   sarah,
   derekM,
-  devin
+  devin,
+  sydney,
+  jen
 };
 
 List<Exercise> exercises = new List<Exercise>() {
@@ -118,12 +122,23 @@ List<Cohort> cohorts = new List<Cohort>(){
     cohortThree
 };
 
+
 exercises.Where(exercise => exercise.Langauge == "JavaScript").ToList().ForEach(exercise => Console.WriteLine(exercise.Name));
-students.Where(student => student.Cohort == cohortOne).ToList().ForEach(student => Console.WriteLine($"{student.FirstName} {student.LastName}"));
-instructors.Where(instructor => instructor.Cohort == cohortOne).ToList().ForEach(instructor => Console.WriteLine(instructor.FirstName));
-
-
 Console.WriteLine();
+students.Where(student => student.Cohort == cohortOne).ToList().ForEach(student => Console.WriteLine($"{student.FirstName} {student.LastName}"));
+Console.WriteLine();
+instructors.Where(instructor => instructor.Cohort == cohortOne).ToList().ForEach(instructor => Console.WriteLine(instructor.FirstName));
+Console.WriteLine();
+students.OrderBy(student => student.LastName).ToList().ForEach(student => Console.WriteLine(student.LastName));
+Console.WriteLine();
+students.Where(student => student.AssignedExercises.Count() == 0).ToList().ForEach(student => Console.WriteLine(student.FirstName));
+Console.WriteLine();
+
+Console.WriteLine(students.Where(student => student.AssignedExercises.Count() == students.Max(student => student.AssignedExercises.Count())).ToList()[0].FirstName);
+
+cohorts.ForEach(cohort => Console.WriteLine(cohort.StudentList.Count()));
+
+
 
 
 
